@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout · SimRacing Cockpit Logitech Trophy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+
+<!-- ====================== TOP BAR ====================== -->
+<header class="topbar">
+    <div class="topbar__inner">
+        <a class="brand" href="index.html" aria-label="My E-Commerce home">
+            <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="22" height="22"><path fill="currentColor" d="M16 2 3 8.5v9.7C3 25.5 8.4 29 16 30c7.6-1 13-4.5 13-11.8V8.5L16 2Zm0 4.4 9 4.5v6.7c0 5-3.3 7.6-9 8.5-5.7-.9-9-3.5-9-8.5v-6.7l9-4.5Z"/></svg>
+            </span>
+            <span class="brand__name">My E‑Commerce</span>
+        </a>
+
+        <nav class="steps" aria-label="Checkout progress">
+            <ol>
+                <li class="is-done"><span>1</span>Cart</li>
+                <li class="is-current"><span>2</span>Checkout</li>
+                <li><span>3</span>Confirmation</li>
+            </ol>
+        </nav>
+
+        <div class="topbar__right">
+            <label class="country" aria-label="Country">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 0c3 3 4.5 6.5 4.5 10S15 19 12 22M12 2C9 5 7.5 8.5 7.5 12S9 19 12 22M2.5 12h19"/></svg>
+                <select class="country-select">
+                    <option value="MEXICO" selected>Mexico</option>
+                    <option value="BRAZIL">Brazil</option>
+                    <option value="ARGENTINA">Argentina</option>
+                </select>
+            </label>
+            <div class="secure" title="Secure connection">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 1 4 4v7c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V4l-8-3Zm0 6a2.5 2.5 0 0 1 2.5 2.5c0 1-.6 1.9-1.5 2.3v2.7h-2v-2.7A2.5 2.5 0 0 1 12 7Z"/></svg>
+                Secure checkout
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="checkout">
+    <div class="checkout__inner">
+
+        <!-- =================== LEFT: FORMS =================== -->
+        <section class="forms">
+
+            <!-- 01 · Personal -->
+            <article class="card">
+                <header class="card__head">
+                    <div class="card__num">01</div>
+                    <div class="card__titles">
+                        <h2>Personal information</h2>
+                        <p>We'll send your receipt and tracking updates here.</p>
+                    </div>
+                    <button type="button" class="ghost-btn" onclick="fillDummyInfo()">
+                        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="m12 2 2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.3l-4.8 2.6.9-5.4L4.2 7.7l5.4-.8L12 2Z"/></svg>
+                        Autofill demo
+                    </button>
+                </header>
+
+                <form id="personalForm" class="grid">
+                    <label class="field span-2">
+                        <input type="text" id="fullname" placeholder=" " autocomplete="name" required />
+                        <span>Full name</span>
+                    </label>
+                    <label class="field span-2">
+                        <input type="email" id="email" placeholder=" " autocomplete="email" required />
+                        <span>Email address</span>
+                    </label>
+                    <label class="field">
+                        <input type="tel" id="phone" placeholder=" " autocomplete="tel" required />
+                        <span>Phone number</span>
+                    </label>
+                    <label class="field">
+                        <input type="text" id="document" placeholder=" " required />
+                        <span>Document / ID</span>
+                    </label>
+                </form>
+            </article>
+
+            <!-- 02 · Address -->
+            <article class="card">
+                <header class="card__head">
+                    <div class="card__num">02</div>
+                    <div class="card__titles">
+                        <h2>Shipping address</h2>
+                        <p>Where should we deliver your cockpit?</p>
+                    </div>
+                </header>
+
+                <form id="addressForm" class="grid">
+                    <label class="field">
+                        <input type="text" id="zip" placeholder=" " autocomplete="postal-code" required />
+                        <span>Zip code</span>
+                    </label>
+                    <label class="field span-3">
+                        <input type="text" id="street" placeholder=" " autocomplete="street-address" required />
+                        <span>Street &amp; number</span>
+                    </label>
+                    <label class="field span-2">
+                        <input type="text" id="neighborhood" placeholder=" " required />
+                        <span>Neighborhood</span>
+                    </label>
+                    <label class="field span-2">
+                        <input type="text" id="city" placeholder=" " autocomplete="address-level2" required />
+                        <span>City</span>
+                    </label>
+                    <label class="field span-2">
+                        <input type="text" id="state" placeholder=" " autocomplete="address-level1" required />
+                        <span>State / Province</span>
+                    </label>
+                    <label class="field span-2">
+                        <input type="text" id="country" placeholder=" " autocomplete="country-name" required />
+                        <span>Country</span>
+                    </label>
+                </form>
+            </article>
+
+            <!-- 03 · Shipping -->
+            <article class="card">
+                <header class="card__head">
+                    <div class="card__num">03</div>
+                    <div class="card__titles">
+                        <h2>Shipping method</h2>
+                        <p id="shippingHint">Complete your address to see available carriers.</p>
+                    </div>
+                </header>
+
+                <div id="shippingOptions" class="ship" style="display:none;">
+                    <label class="ship__opt">
+                        <input type="radio" name="shippingOption" id="shipping7" value="10.00" required />
+                        <div class="ship__body">
+                            <div class="ship__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 7h11v8H3zM14 10h4l3 3v2h-7zM7.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>
+                            </div>
+                            <div class="ship__meta">
+                                <div class="ship__title">Carrier A · Standard</div>
+                                <div class="ship__sub">Arrives in 7 business days</div>
+                            </div>
+                            <div class="ship__price">$10.00</div>
+                        </div>
+                    </label>
+
+                    <label class="ship__opt">
+                        <input type="radio" name="shippingOption" id="shipping3" value="15.00" required />
+                        <div class="ship__body">
+                            <div class="ship__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 13h7l-1-5 8 9h-6l1 4-9-8Z"/></svg>
+                            </div>
+                            <div class="ship__meta">
+                                <div class="ship__title">Carrier B · Express</div>
+                                <div class="ship__sub">Arrives in 3 business days</div>
+                            </div>
+                            <div class="ship__price">$15.00</div>
+                        </div>
+                    </label>
+
+                    <label class="ship__opt ship__opt--featured">
+                        <input type="radio" name="shippingOption" id="shipping1" value="20.00" required />
+                        <div class="ship__body">
+                            <div class="ship__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7Z"/></svg>
+                            </div>
+                            <div class="ship__meta">
+                                <div class="ship__title">Mercado Envíos · Next day <span class="badge">Fastest</span></div>
+                                <div class="ship__sub">Arrives in 1 business day · Tracked</div>
+                            </div>
+                            <div class="ship__price">$20.00</div>
+                        </div>
+                    </label>
+                </div>
+            </article>
+
+            <!-- 04 · Payment -->
+            <article class="card">
+                <header class="card__head">
+                    <div class="card__num">04</div>
+                    <div class="card__titles">
+                        <h2>Payment method</h2>
+                        <p>Choose how you'd like to pay. All transactions are encrypted.</p>
+                    </div>
+                </header>
+
+                <div class="pay" role="radiogroup" aria-label="Payment method">
+                    <label class="pay__opt">
+                        <input type="radio" name="paymentMethod" id="mercadoPago" value="Mercado Pago" checked />
+                        <div class="pay__body">
+                            <div class="pay__logo pay__logo--mp" aria-hidden="true">
+                                <svg viewBox="0 0 64 44" width="44" height="30"><rect width="64" height="44" rx="8" fill="#00B1EA"/><path fill="#fff" d="M32 12c-7 0-13 4-15 9 3-2 7-3 11-2 3 .8 4.5 2.6 6 2.6s3-1.8 6-2.6c4-1 8 0 11 2-2-5-8-9-15-9Zm-9 17c2.6 0 4.5-1.4 6-2.6 1.5 1.2 3.4 2.6 6 2.6 4 0 7.5-2.5 7.5-6 0-1.4-.6-2.6-1.5-3.5-1.6 1-3.4 1.4-5 1.4-2.4 0-3.8-1.6-6-1.6S25 20 22.6 20c-1.6 0-3.4-.4-5-1.4-1 .9-1.6 2.1-1.6 3.5C16 25.5 19.5 28 23.5 28Z"/></svg>
+                            </div>
+                            <div class="pay__meta">
+                                <div class="pay__title">Pay with Mercado Pago</div>
+                                <div class="pay__sub">Account balance, Pix, boleto, installments up to 12×</div>
+                            </div>
+                            <div class="pay__check" aria-hidden="true"></div>
+                        </div>
+                    </label>
+
+                    <label class="pay__opt">
+                        <input type="radio" name="paymentMethod" id="creditCard" value="Credit Card" />
+                        <div class="pay__body">
+                            <div class="pay__logo pay__logo--cc" aria-hidden="true">
+                                <svg viewBox="0 0 64 44" width="44" height="30"><rect width="64" height="44" rx="8" fill="#1F2937"/><rect x="6" y="14" width="52" height="6" fill="#9CA3AF"/><rect x="6" y="28" width="20" height="4" rx="1" fill="#9CA3AF"/></svg>
+                            </div>
+                            <div class="pay__meta">
+                                <div class="pay__title">Credit or debit card</div>
+                                <div class="pay__sub">Visa, Mastercard, Amex, Elo</div>
+                            </div>
+                            <div class="pay__check" aria-hidden="true"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Credit Card form -->
+                <div id="creditCardForm" class="cc" style="display:none;">
+                    <div class="cc__preview" aria-hidden="true">
+                        <div class="cc__chip"></div>
+                        <div class="cc__brand">VISA</div>
+                        <div class="cc__num" id="ccPreviewNum">•••• •••• •••• ••••</div>
+                        <div class="cc__row">
+                            <div>
+                                <div class="cc__label">Cardholder</div>
+                                <div class="cc__val" id="ccPreviewName">YOUR NAME</div>
+                            </div>
+                            <div>
+                                <div class="cc__label">Expires</div>
+                                <div class="cc__val" id="ccPreviewExp">MM/YY</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <label class="field span-4">
+                            <input type="text" id="cardName" placeholder=" " autocomplete="cc-name" required />
+                            <span>Name on card</span>
+                        </label>
+                        <label class="field span-4">
+                            <input type="text" id="cardNumber" placeholder=" " inputmode="numeric" autocomplete="cc-number" required />
+                            <span>Card number</span>
+                        </label>
+                        <label class="field span-2">
+                            <input type="text" id="cardExpDate" placeholder=" " inputmode="numeric" autocomplete="cc-exp" required />
+                            <span>Expires (MM/YY)</span>
+                        </label>
+                        <label class="field span-2">
+                            <input type="text" id="cardCVV" placeholder=" " inputmode="numeric" autocomplete="cc-csc" required />
+                            <span>CVV</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="payButton" class="pay-btn" disabled onclick="payNow()">
+                    <span class="pay-btn__label">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 1 4 4v7c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V4l-8-3Zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7Z"/></svg>
+                        PAY
+                    </span>
+                    <span class="pay-btn__amount">$<span id="payButtonAmount">10.00</span></span>
+                </button>
+
+                <div id="loadingBar" style="display:none;">
+                    <div class="progress"><div class="progress__bar"></div></div>
+                    <p class="progress__hint">Processing your payment…</p>
+                </div>
+
+                <div id="paymentMessage" style="display:none;">
+                    <div class="alert alert-success">
+                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm-1.4 14L6 11.4l1.4-1.4 3.2 3.2 6-6L18 8.6Z"/></svg>
+                        <div>
+                            <strong>Payment authorized</strong>
+                            <span>You'll receive a confirmation email shortly.</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- =================== RIGHT: SUMMARY =================== -->
+        <aside class="summary">
+            <div class="summary__sticky">
+                <article class="card summary__card">
+                    <h2 class="summary__title">Order summary</h2>
+
+                    <div class="product">
+                        <div class="product__img">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_606193-MLB78198490809_082024-F.webp" alt="SimRacing Cockpit Logitech Trophy" />
+                            <span class="product__qty" id="checkoutQuantity">1</span>
+                        </div>
+                        <div class="product__info">
+                            <div class="product__brand">Logitech G · Sim Racing</div>
+                            <div class="product__name">SimRacing Cockpit Logitech Trophy</div>
+                            <div class="product__seller">
+                                <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19l12-12-1.4-1.4Z"/></svg>
+                                Sold by My E‑Commerce · Official Store
+                            </div>
+                        </div>
+                    </div>
+
+                    <dl class="totals">
+                        <div>
+                            <dt>Subtotal</dt>
+                            <dd>$<span id="checkoutSubtotal">10.00</span></dd>
+                        </div>
+                        <div>
+                            <dt>Shipping</dt>
+                            <dd>$<span id="shippingCost">0.00</span></dd>
+                        </div>
+                        <div>
+                            <dt>Taxes</dt>
+                            <dd class="muted">Calculated at carrier</dd>
+                        </div>
+                        <div class="totals__grand">
+                            <dt>Total</dt>
+                            <dd>
+                                <span class="totals__currency" id="totalCurrency">USD</span>
+                                $<span id="checkoutTotal">10.00</span>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <ul class="trust">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 1 4 4v7c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V4l-8-3Z"/></svg>
+                            256‑bit SSL encryption
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M21 7H3v10h18zM3 5h18v2H3zm2 8h6v2H5z"/></svg>
+                            All major cards accepted
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7Z"/></svg>
+                            30‑day return policy
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer class="foot">
+    <div class="foot__inner">
+        <p>This is a sample of some of the integrations available in Mercado Pago. All requests made here are in a Sandbox environment, so they won't create real payments.</p>
+        <a href="https://dncosta.github.io/sample-mercadopago/old" id="olderVersionLink">See the older version →</a>
+    </div>
+</footer>
+
+<!-- Mobile sticky CTA bar -->
+<div class="mobile-cta" aria-hidden="false">
+    <div>
+        <div class="mobile-cta__label">Total · <span id="mobileQty">1</span> item</div>
+        <div class="mobile-cta__amount">$<span id="mobileTotal">10.00</span></div>
+    </div>
+    <button class="mobile-cta__btn" onclick="document.getElementById('payButton').click()">Pay</button>
+</div>
+
+<script src="checkout.js"></script>
+<script src="checkout-ui.js"></script>
+</body>
+</html>
